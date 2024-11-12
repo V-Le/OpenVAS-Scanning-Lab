@@ -7,6 +7,13 @@
 - Select *File > Import Appliance*
 - Click on ![](images/Icon-SelectFile.png) and navigate to and select the downloaded Greenbone OpenVAS OVA file
 - Click Finish
+- Click Settings
+	- *Network > Adapter 1 > Enable Network Adapter > Attached to: Bridged Adapter > Promiscuous Mode: Allow All*
+		- This allows the VM to communicate with other VMs that have Bridge Adapter enabled (same subnet)
+		- ![|450](../../Network_adapter1.png)
+	- *Network > Adapter 2 > Enable Network Adapter > Attached to: NAT*
+		- This allows the VM to communicate to the internet through the host machine's IP
+		- ![|450](../../Network_adapter2.png)
 - Click Start and log in
 	- Username: admin
 	- Password: admin
