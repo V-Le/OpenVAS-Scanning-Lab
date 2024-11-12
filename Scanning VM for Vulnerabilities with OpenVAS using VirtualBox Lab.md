@@ -1,5 +1,5 @@
 ## Prerequisites 
-- Downloaded and installed Virtualbox [Download](https://www.virtualbox.org/wiki/Downloads)
+- Downloaded and installed VirtualBox [Download](https://www.virtualbox.org/wiki/Downloads)
 - Greenbone OpenVAS OVA downloaded [Download](https://www.greenbone.net/en/greenbone-free/)
 - Windows 10 ISO downloaded [Download](https://www.microsoft.com/en-us/software-download/windows10) 
 ## Setting up Greenbone OpenVAS VM
@@ -26,16 +26,21 @@
 - Once in the main Greenbone OS Administration menu, we need to update the feed.
 	- ![](images/Greenbone-OpenVAS-Menu.png)
 - Select *Maintenance > Feed > Update*
-- The feed update will take up to 30-60 minutes. You can check the progress by going to *About* in the main menu. If it is updating still, it will say "The system operation 'Update Feed' is running currently"
-- 
-
-## Setting up Windows 10 VM and enabling vulnerabilities
+	- The feed update will take up to 30-60 minutes. You can check the progress by going to *About* in the main menu. If it is updating still, it will say "System Status: The system operation 'Update Feed' is running currently"
+	- Once it is completed, it will say "System Status: No system operation is running currently."
+- You can shutdown OpenVAS VM by selecting *Maintenance > Power > Shutdown*
+- Note: Now would be a good time to take a snapshot of the base VM to revert back to if you accidentally misconfigure something.
+	- On the Oracle VirtualBox Manager, select the VM to take a snapshot of.
+	- Click on ![|40](images/VirtualBox_Take.png)
+		- Snapshot Name: Baseline
+		- Snapshot Description: Fresh installation
+## Setting up Windows 10 VM
 - Start VirtualBox
 - Select *Machine > New*
 	- *Name and Operating System*
 		- Name: Windows10-VM
-		- Under ISO Image, click on ![](../../ISO_image_dropdown.png) and navigate to and select the downloaded Windows 10 ISO file
-			- ![](../../Windows10_Name-and-OS.png)
+		- Under ISO Image, click on ![](images/ISO_image_dropdown.png) and navigate to and select the downloaded Windows 10 ISO file
+			- ![](images/Windows10_Name-and-OS.png)
 	- Click on *Unattended Install*
 		- Type in a Username and Password
 	- Click on *Hardware*
@@ -49,7 +54,7 @@
 	- On the Virtual Machine menu bar, click *File > Close... > Power off the machine > OK*
 	- On Oracle VirtualBox Manager, select the Windows10-VM, then click Settings
 	- Under *System > Boot Order*, uncheck Floppy
-	- Under *Storage > Devices*, select the item under *Controller: Floppy*, then click Remove Attachment ![](../../Remove_Attachment.png)
+	- Under *Storage > Devices*, select the item under *Controller: Floppy*, then click Remove Attachment ![](images/Remove_Attachment.png)
 	- Click *OK*
 - On Oracle VirtualBox Manager, click Settings
 	- *Network > Adapter 1 > Enable Network Adapter > Attached to: Bridged Adapter > Promiscuous Mode: Allow All*
@@ -59,7 +64,17 @@
 		- This allows the VM to communicate to the internet through the host machine's IP
 		- ![|450](images/Network_adapter2.png)
 	- Click *OK* to apply settings
-- Click Start and log in
+- Click Start to power up Windows 10 VM
+- Set up Windows 10 installation
+	- Click *Next > Install Now > I don't have a product key*
+	- For the operating system selection, select *Windows 10 Pro*, and click *Next*
+	- Check *I accept the license terms > Next*
+	- Click *Custom: Install Windows only (advanced)*
+	- Click *Drive 0 Unallocated Space > New > Apply > OK*
+	- Click *Drive 0 Partition 2 > Next*
+	- Let Windows 10 install on the virtual machine
+
+## Enabling vulnerabilities
 
 ## Configuring unauthenticated scan in OpenVAS
 
