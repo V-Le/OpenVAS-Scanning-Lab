@@ -14,6 +14,7 @@
 	- *Network > Adapter 2 > Enable Network Adapter > Attached to: NAT*
 		- This allows the VM to communicate to the internet through the host machine's IP
 		- ![|450](images/Network_adapter2.png)
+	- Click *OK* to apply settings
 - Click Start and log in
 	- Username: admin
 	- Password: admin
