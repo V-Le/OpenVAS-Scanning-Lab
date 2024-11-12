@@ -5,8 +5,8 @@
 ## Setting up Greenbone OpenVAS VM
 - Start VirtualBox
 - Select *File > Import Appliance*
-- Click on ![](images/Icon-SelectFile.png) and navigate to and select the downloaded Greenbone OpenVAS OVA file
-- Click Finish
+	- Click on ![](images/Icon-SelectFile.png) and navigate to and select the downloaded Greenbone OpenVAS OVA file
+	- Click Finish
 - Click Settings
 	- *Network > Adapter 1 > Enable Network Adapter > Attached to: Bridged Adapter > Promiscuous Mode: Allow All*
 		- This allows the VM to communicate with other VMs that have Bridge Adapter enabled (same subnet)
@@ -18,13 +18,13 @@
 - Click Start and log in
 	- Username: admin
 	- Password: admin
-- When prompted to complete setup, select *Yes*
-- When Prompted to create a web admin, select *Yes*
-- When prompted to create new admin, create an Account name and Password
-- Select *OK*
-- When prompted to Upload Subscription Key Now, select *Skip > OK*
-	- ![](images/Greenbone-OpenVAS-Menu.png)
+	- When prompted to complete setup, select *Yes*
+	- When Prompted to create a web admin, select *Yes*
+	- When prompted to create new admin, create an Account name and Password
+	- Select *OK*
+	- When prompted to Upload Subscription Key Now, select *Skip > OK*
 - Once in the main Greenbone OS Administration menu, we need to update the feed.
+	- ![](images/Greenbone-OpenVAS-Menu.png)
 - Select *Maintenance > Feed > Update*
 - The feed update will take up to 30-60 minutes. You can check the progress by going to *About* in the main menu. If it is updating still, it will say "The system operation 'Update Feed' is running currently"
 - 
