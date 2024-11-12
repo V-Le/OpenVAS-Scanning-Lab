@@ -73,6 +73,17 @@
 	- Click *Drive 0 Unallocated Space > New > Apply > OK*
 	- Click *Drive 0 Partition 2 > Next*
 	- Let Windows 10 install on the virtual machine
+- After Windows 10 is installed, go through basic setup
+	- Click *Yes > Yes > Skip second keyboard layout > Set up for personal use > Next > Offline account > Limited experience*
+	- Go through the next few screens of setting up your Username, Password, and security questions.
+	- Click *Not now > Accept > Skip > Not now*
+- After you get past all the menus, you can shutdown the Windows10 VM
+	- Click on *Start > Power > Shutdown*
+- Note: Now would be a good time to take a snapshot of the base VM to revert back to if you accidentally misconfigure something.
+	- On the Oracle VirtualBox Manager, select the VM to take a snapshot of.
+	- Click on ![|40](images/VirtualBox_Take.png)
+		- Snapshot Name: Baseline
+		- Snapshot Description: Fresh installation
 
 ## Enabling vulnerabilities
 
