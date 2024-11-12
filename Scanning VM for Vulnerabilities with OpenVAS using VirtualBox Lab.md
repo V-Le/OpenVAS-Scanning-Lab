@@ -30,6 +30,36 @@
 - 
 
 ## Setting up Windows 10 VM and enabling vulnerabilities
+- Start VirtualBox
+- Select *Machine > New*
+	- *Name and Operating System*
+		- Name: Windows10-VM
+		- Under ISO Image, click on ![](../../ISO_image_dropdown.png) and navigate to and select the downloaded Windows 10 ISO file
+			- ![](../../Windows10_Name-and-OS.png)
+	- Click on *Unattended Install*
+		- Type in a Username and Password
+	- Click on *Hardware*
+		- Base Memory: 4096 MB or more
+		- Processors: 2 CPU or more
+	- Click *Hard Disk*
+		- Hard Disk Size: at least 10 GB, no more than 15 GB
+	- Click Finish
+- Note: Windows 10 VM will automatically start. Let it start and if it gives you an error "*Windows cannot read the \<ProductKey> setting from the unattend answer file.*", follow the instructions below. Otherwise, skip these steps.
+	- Click *OK* to close dialogue
+	- On the Virtual Machine menu bar, click *File > Close... > Power off the machine > OK*
+	- On Oracle VirtualBox Manager, select the Windows10-VM, then click Settings
+	- Under *System > Boot Order*, uncheck Floppy
+	- Under *Storage > Devices*, select the item under *Controller: Floppy*, then click Remove Attachment ![](../../Remove_Attachment.png)
+	- Click *OK*
+- On Oracle VirtualBox Manager, click Settings
+	- *Network > Adapter 1 > Enable Network Adapter > Attached to: Bridged Adapter > Promiscuous Mode: Allow All*
+		- This allows the VM to communicate with other VMs that have Bridge Adapter enabled (same subnet)
+		- ![|450](images/Network_adapter1.png)
+	- *Network > Adapter 2 > Enable Network Adapter > Attached to: NAT*
+		- This allows the VM to communicate to the internet through the host machine's IP
+		- ![|450](images/Network_adapter2.png)
+	- Click *OK* to apply settings
+- Click Start and log in
 
 ## Configuring unauthenticated scan in OpenVAS
 
