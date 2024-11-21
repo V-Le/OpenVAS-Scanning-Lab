@@ -106,7 +106,18 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 ## Enabling vulnerabilities on Windows 10 VM
 - Boot up the Windows 10 VM
 - Once logged in, disable the Windows Firewall
-	- Click *Start* and type *wf.msc* to open the windows 10 VM
+	- Click *Start* and type *wf.msc* to open the Widows Firewall
+	- In the *Windows Defender Firewall with Advanced Security on Local Computer* panel under *Overview*, Click on *Windows Defender Firewall Properties*
+	- Click *Domain Profile > Firewall state: Off*
+	- Click *Private Profile > Firewall state: Off*
+	- Click *Public Profile > Firewall state: Off*
+	- Click *Ok*
+- Install Old Software
+	- Install an Old Version of Firefox: Firefox Setup 97.0b5.exe
+	- Install an Old Version of VLC Player: vlc-1.1.7-win32.exe
+	- Install an Old Version of Adobe Reader: 10.0_AdbeRdr1000_en_US_1_.exe
+- Restart the Windows 10 VM
+
 
 ## Configuring unauthenticated scan in OpenVAS
 
