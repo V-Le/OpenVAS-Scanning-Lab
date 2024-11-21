@@ -102,7 +102,6 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 	- Click on ![|40](images/VirtualBox_Take.png)
 		- Snapshot Name: Baseline
 		- Snapshot Description: Fresh installation
-
 ## Enabling vulnerabilities on Windows 10 VM
 - Boot up the Windows 10 VM
 - Once logged in, disable the Windows Firewall
@@ -117,19 +116,57 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 	- Install an Old Version of VLC Player: vlc-1.1.7-win32.exe
 	- Install an Old Version of Adobe Reader: 10.0_AdbeRdr1000_en_US_1_.exe
 - Restart the Windows 10 VM
-
-
 ## Configuring unauthenticated scan in OpenVAS
-
+- Login to OpenVAS → Assets → Hosts → New Host
+	- Add the Client VM PRIVATE IP Address
+- Create a New Target from the Host, name it “Azure Vulnerable VMs”.
+	- Take note of the credentials. We will add SMB credentials later.
+- Create a new Task
+	- Name & Comment: “Scan - Azure Vulnerable VMs”
+	- Scan Targets → “Azure Vulnerable VMs”
+	- Save the Task
 ## Running unauthenticated scan against Windows 10 VM
-
+- “Start” the “Scan - Azure Vulnerable VMs” Task
+	- Take note of the Status:
 ## Observing unauthenticated scan results
-
+- Once the scan is finished, click the date under “Last Report” to see the results
+	- Take note of Tabs, specifically the “Results” tab. Even though we installed a super old version of Firefox, note that it does not show up here.
+	- Note that this is because we aren’t running a credentialed scan so the scanner could not discover it. We will configure credential scans next
 ## Configuring authenticated scan in OpenVAS with credentials
+- Go to Configuration → Credentials → New Credential
+	- Name / Comment → “Azure VM Credentials”
+	- Allow Insecure Use: Yes
+	- Username: azureuser
+	- Password: Cyberlab123!
+	- Save
+- Go to Configuration → Targets → CLONE the Target we made before
+	- NEW Name / Comment: “Azure Vulnerable VMs - Credentialed Scan”
+	- Ensure the Private IP is still accurate
+	- Credentials → SMB → Select the Credentials we just made: Azure VM Credentials
+	- Save
 
 ## Reconfiguring Windows 10 VM to allow authenticated scan
-
+- Disable Windows Firewall
+- Disable User Account Control
+- Enable Remote Registry
+- Set Registry Key
+	- Launch Registry Editor (regedit.exe) in “Run as administrator” mode and grant Admin Approval, if requested
+	- Navigate to HKEY_LOCAL_MACHINE hive
+	- Open SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System key
+	- Create a new DWORD (32-bit) value with the following properties:  Name: LocalAccountTokenFilterPolicy  Value: 1
+	- Close Registry Editor  
+- Restart the VM
 ## Running authenticated scan against Windows 10 VM
+- Within Greenbone / OpenVAS, go to Scans → Tasks
+- CLONE the “Scan - Azure Vulnerable VMs” Task, then Edit it:
+	- Name / Comment → “Scan - Azure Vulnerable VMs - Credentialed”
+	- Targets: Azure Vulnerable VMs - Credentialed Scan
+	- Save
+- Click the Play button to launch the new Credentialed Scan, wait for it to finish
+	- It will take longer than the last one. Wait for it to finish
+- After the credentialed scan finishes, you can immediately see the difference in findings:
+- Check SMB Login under “Results”
+- Further inspect the individual vulnerabilities and see all the Criticals from the out-of-date FireFox
 
 ## Observing authenticated scan results
 
