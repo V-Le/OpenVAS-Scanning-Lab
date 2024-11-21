@@ -103,7 +103,10 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 		- Snapshot Name: Baseline
 		- Snapshot Description: Fresh installation
 
-## Enabling vulnerabilities
+## Enabling vulnerabilities on Windows 10 VM
+- Boot up the Windows 10 VM
+- Once logged in, disable the Windows Firewall
+	- Click *Start* and type *wf.msc* to open the windows 10 VM
 
 ## Configuring unauthenticated scan in OpenVAS
 
