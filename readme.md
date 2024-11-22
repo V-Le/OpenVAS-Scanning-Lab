@@ -2,6 +2,8 @@
 
 In this homelab, I set up a virtualized environment using Oracle VirtualBox, deploying an OpenVAS Vulnerability Management Scanner VM and a vulnerable Windows 10 VM. I simulated a security testing scenario by intentionally installing outdated software on the Windows 10 VM and performing both unauthenticated and credentialed vulnerability scans with OpenVAS. I then analyzed the scan results, remediated the identified vulnerabilities, and verified improvements through subsequent rescans.
 
+Remember that creating vulnerabilities involves making the system insecure, so it's essential to isolate your lab environment from production networks. This can be done using virtual machines and a separate, isolated network. Also, ensure that you understand the implications of your actions and the importance of ethical conduct in cybersecurity.
+
 This lab provided hands-on experience in vulnerability scanning, system hardening, and patch management.
 
 - Set up a virtualized homelab environment using Oracle VirtualBox, deploying an OpenVAS Vulnerability Management Scanner VM and a vulnerable Windows 10 VM.  
@@ -146,7 +148,6 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 	- Save
 
 ## Reconfiguring Windows 10 VM to allow authenticated scan
-- Disable Windows Firewall
 - Disable User Account Control
 - Enable Remote Registry
 - Set Registry Key
@@ -164,12 +165,16 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 	- Save
 - Click the Play button to launch the new Credentialed Scan, wait for it to finish
 	- It will take longer than the last one. Wait for it to finish
+
+
+## Observing authenticated scan results
 - After the credentialed scan finishes, you can immediately see the difference in findings:
 - Check SMB Login under “Results”
 - Further inspect the individual vulnerabilities and see all the Criticals from the out-of-date FireFox
-
-## Observing authenticated scan results
-
 ## Remediating software vulnerabilities
+- Log back into your Win10-Vulnerable VM
+- Uninstall Adobe Reader, VLC Player, and Firefox
+- Restart the VM
+- Re-initiate the “Scan - Azure Vulnerable VMs - Credentialed” scan and observe the results to verify remediations.
 
 ## Further Recommendations
