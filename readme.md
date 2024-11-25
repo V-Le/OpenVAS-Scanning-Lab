@@ -125,17 +125,24 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 	- ![](images/Ethernet%20adapter.png)
 ## Configuring unauthenticated scan in OpenVAS
 - Boot up the OpenVAS VM and log in
-- Click on *Assets* > *Hosts* > *New Host*
-	- Add the Client VM PRIVATE IP Address
-- Create a New Target from the Host, name it “Azure Vulnerable VMs”.
-	- Take note of the credentials. We will add SMB credentials later.
-- Create a new Task
-	- Name & Comment: “Scan - Azure Vulnerable VMs”
-	- Scan Targets → “Azure Vulnerable VMs”
-	- Save the Task
+- Click on *Assets* > *Hosts*
+- On the top left, click *New Host* ![](images/New-Host.png)
+	- IP Address: (Type in the IPv4 Address that you had written)
+	- Comment: Windows10 VM
+	- Click *Save*
+- Under *Actions* on the right side, click on *New Target from the Host* ![](images/New-Host.png), name it “Azure Vulnerable VMs”.
+- In the *New Target* window,
+	- Name & Comment: Windows10 Vulnerable VM
+	- Leave rest as is and click *Save*
+- Click on *Scans* > *Tasks*
+- On the top left, click on *New Task* ![](images/New-Host.png)
+	- Name & Comment: “Scan - Windows10 Vulnerable VM”
+	- Scan Targets → “Windows10 Vulnerable VM”
+	- Leave rest as is and click *Save*
+	- ![|600](images/New-Task-1.png)
 ## Running unauthenticated scan against Windows 10 VM
-- “Start” the “Scan - Azure Vulnerable VMs” Task
-	- Take note of the Status:
+- Click *Start* ![](images/start.png) to start the “Scan - Windows10 Vulnerable VM” Task
+	- This scan will take a few minutes
 ## Observing unauthenticated scan results
 - Once the scan is finished, click the date under “Last Report” to see the results
 	- Take note of Tabs, specifically the “Results” tab. Even though we installed a super old version of Firefox, note that it does not show up here.
