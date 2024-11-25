@@ -118,8 +118,14 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 	- Install an Old Version of VLC Player: vlc-1.1.7-win32.exe
 	- Install an Old Version of Adobe Reader: 10.0_AdbeRdr1000_en_US_1_.exe
 - Restart the Windows 10 VM
+-  Right Click on the Windows icon![](images/WindowsTaskbar.png) on the bottom left, then click on *Run*
+	- In the text field, type *CMD* and press enter to opening the command line
+	- Type "*ipconfig /all*"
+	- If you had set your networking to bridge mode. Under Ethernet adapter Ethernet 2, write down the *IPv4 Address*
+	- ![](images/Ethernet%20adapter.png)
 ## Configuring unauthenticated scan in OpenVAS
-- Login to OpenVAS → Assets → Hosts → New Host
+- Boot up the OpenVAS VM and log in
+- Click on *Assets* > *Hosts* > *New Host*
 	- Add the Client VM PRIVATE IP Address
 - Create a New Target from the Host, name it “Azure Vulnerable VMs”.
 	- Take note of the credentials. We will add SMB credentials later.
