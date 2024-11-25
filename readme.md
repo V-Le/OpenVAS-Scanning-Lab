@@ -142,7 +142,8 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 	- ![|600](images/New-Task-1.png)
 ## Running unauthenticated scan against Windows 10 VM
 - Click *Start* ![](images/start.png) to start the “Scan - Windows10 Vulnerable VM” Task
-	- This scan will take a few minutes
+	- The status will update as the scan progresses and will take a few minutes. When the scan is finished, the Status will changed to "Done"
+	- ![](images/Scan-1-Finished.png)
 ## Observing unauthenticated scan results
 - Once the scan is finished, click the date under “Last Report” to see the results
 	- Take note of Tabs, specifically the “Results” tab. Even though we installed a super old version of Firefox, note that it does not show up here.
