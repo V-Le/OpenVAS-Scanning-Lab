@@ -96,6 +96,7 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 - After Windows 10 is installed, go through basic setup
 	- Click *Yes > Yes > Skip second keyboard layout > Set up for personal use > Next > Offline account > Limited experience*
 	- Go through the next few screens of setting up your Username, Password, and security questions.
+		- Take note of your Username and Password as this will required later for OpenVAS to do a credentialed scan
 	- Click *Not now > Accept > Skip > Not now*
 - After you get past all the menus, you can shutdown the Windows10 VM
 	- Click on *Start > Power > Shutdown*
@@ -149,26 +150,39 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 	- Take note of Tabs, specifically the “Results” tab. Even though we installed a super old version of Firefox, note that it does not show up here.
 	- Note that this is because we aren’t running a credentialed scan so the scanner could not discover it. We will configure credential scans next
 ## Configuring authenticated scan in OpenVAS with credentials
-- Go to Configuration → Credentials → New Credential
-	- Name / Comment → “Azure VM Credentials”
+- Click on *Configuration* > *Credentials*
+- On the top left, click on *New Credential* ![](images/New-Host.png)
+	- Name & Comment: “Windows10 VM Credentials”
+	- Type: Username + Password
 	- Allow Insecure Use: Yes
-	- Username: azureuser
-	- Password: Cyberlab123!
+	- Auto-generate: No
+	- Username: (Enter your Username that was used for the Windows10 VM)
+	- Password: (Enter your Password that was used for the Windows10 VM))
 	- Save
-- Go to Configuration → Targets → CLONE the Target we made before
-	- NEW Name / Comment: “Azure Vulnerable VMs - Credentialed Scan”
+- Click on *Configuration* > *Targets*
+- On the "Windows10 Vulnerable VM" row, Click "Clone Target" ![](images/clone.png)
+- On the new cloned target, click "Edit Target" ![](images/edit-target.png)
+	- Name & Comment: “Windows10 Vulnerable VM - Credentialed Scan”
 	- Ensure the Private IP is still accurate
-	- Credentials → SMB → Select the Credentials we just made: Azure VM Credentials
+	- Under *Credentials for authenticated check*, click on *SMB* and select “Windows10 VM Credentials”
+	-![|400](images/Edit-Target_Windows10VM.png)
 	- Save
-
 ## Reconfiguring Windows 10 VM to allow authenticated scan
 - Disable User Account Control
+	- Click Start and type in "UAC"
+	- Click on "*Change User Account Control settings*"
+	- Move slider to "*Never notify*"
+	- Click "*OK"
+	- ![|400](images/UAC.png)
 - Enable Remote Registry
-- Set Registry Key
-	- Launch Registry Editor (regedit.exe) in “Run as administrator” mode and grant Admin Approval, if requested
-	- Navigate to HKEY_LOCAL_MACHINE hive
-	- Open SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System key
-	- Create a new DWORD (32-bit) value with the following properties:  Name: LocalAccountTokenFilterPolicy  Value: 1
+	- Click Start and type in "Registry"
+	- Launch "Registry Editor" (regedit.exe) in “Run as administrator” mode and grant Admin Approval, if requested
+	- Navigate to HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System key
+	- Create a new DWORD (32-bit) value with the following properties:
+		- Name: LocalAccountTokenFilterPolicy
+		- Value: 1
+		- Click *OK*
+		- ![](images/DWORD.png)
 	- Close Registry Editor  
 - Restart the VM
 ## Running authenticated scan against Windows 10 VM
