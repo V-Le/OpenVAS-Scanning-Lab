@@ -48,6 +48,9 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 - Select *Maintenance > Feed > Update*
 	- The feed update will take up to 30-60 minutes. You can check the progress by going to *About* in the main menu. If it is updating still, it will say "System Status: The system operation 'Update Feed' is running currently"
 	- Once it is completed, it will say "System Status: No system operation is running currently."
+- Once the Feed Update is completed, we need to know the Ip Address needed to access the OpenVAS Web Interface
+	- Click *Setup* > *Network* > *IP*
+	- Take note of your IP Address before the "/". This IP Address can be access through your web browser to access the OpenVAS Web Interface
 - You can shutdown OpenVAS VM by selecting *Maintenance > Power > Shutdown*
 - Note: Now would be a good time to take a snapshot of the base VM to revert back to if you accidentally misconfigure something.
 	- On the Oracle VirtualBox Manager, select the VM to take a snapshot of.
@@ -126,6 +129,7 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 	- ![](images/Ethernet%20adapter.png)
 ## Configuring unauthenticated scan in OpenVAS
 - Boot up the OpenVAS VM and log in
+- Access the OpenVAS Web Interface
 - Click on *Assets* > *Hosts*
 - On the top left, click *New Host* ![](images/New-Host.png)
 	- IP Address: (Type in the IPv4 Address that you had written)
@@ -186,15 +190,15 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 	- Close Registry Editor  
 - Restart the VM
 ## Running authenticated scan against Windows 10 VM
-- Within Greenbone / OpenVAS, go to Scans → Tasks
-- CLONE the “Scan - Azure Vulnerable VMs” Task, then Edit it:
-	- Name / Comment → “Scan - Azure Vulnerable VMs - Credentialed”
-	- Targets: Azure Vulnerable VMs - Credentialed Scan
+- Within the OpenVAS Web Interface, Click on *Scans* > *Tasks*
+- On the "Scan - Windows10 Vulnerable VM" row, Click "Clone Task" ![](images/clone.png)
+- On the new cloned task, click "Edit Task" ![](images/edit-target.png)
+	- Name & Comment: “Scan - Windows10 Vulnerable VM - Credentialed”
+	- Scan Targets: "Windows10 Vulnerable VM - Credentialed Scan"
 	- Save
-- Click the Play button to launch the new Credentialed Scan, wait for it to finish
-	- It will take longer than the last one. Wait for it to finish
-
-
+-  Click *Start* ![](images/start.png) to start the “Scan - Windows10 Vulnerable VM - Credentialed” Task
+	- The status will update as the scan progresses and will take a few minutes. When the scan is finished, the Status will changed to "Done"
+	- ![](images/Scan-2-Finished.png)
 ## Observing authenticated scan results
 - After the credentialed scan finishes, you can immediately see the difference in findings:
 - Check SMB Login under “Results”
