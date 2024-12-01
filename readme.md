@@ -202,11 +202,9 @@ Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authentic
 ## Observing authenticated scan results
 - After the credentialed scan finishes, you can immediately see the difference in findings:
 - Check SMB Login under “Results”
-- Further inspect the individual vulnerabilities and see all the Criticals from the out-of-date FireFox
+- Further inspect the individual vulnerabilities and see all the Criticals from the out-of-date Adobe Reader, VLC Player, and Firefox
 ## Remediating software vulnerabilities
-- Log back into your Win10-Vulnerable VM
+- Log back into your Windows10 VM
 - Uninstall Adobe Reader, VLC Player, and Firefox
 - Restart the VM
-- Re-initiate the “Scan - Azure Vulnerable VMs - Credentialed” scan and observe the results to verify remediations.
-
-## Further Recommendations
+- Re-initiate the “Scan - Windows10 Vulnerable VM - Credentialed Scan” scan and observe the results to verify remediations.
