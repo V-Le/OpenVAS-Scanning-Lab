@@ -13,7 +13,7 @@ This lab provided hands-on experience in vulnerability scanning, system hardenin
 - Remediated identified vulnerabilities through system patching, configuration changes, and security updates, then verified successful remediation by rescanning with OpenVAS.  
 - Created a comprehensive list of vulnerabilities and remediation steps, simulating realistic vulnerability remediation scenarios for improving system security.
 
-**Skills:**
+**Skills Used:**
 Vulnerability Scanning · OpenVAS Configuration · Unauthenticated and Authenticated Scanning · Vulnerability Remediation · System Hardening · Network Security · Windows Firewall · Security Documentation · Cyber Risk Management · Penetration Testing · Virtualization
 
 ---
